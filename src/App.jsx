@@ -28,7 +28,6 @@ function App() {
     if (Object.keys(gastoEditar).length > 0) {
       setModal(true)
 
-
       setTimeout(() => {
         setAnimarModal(true)
       }, 500);
@@ -60,7 +59,7 @@ function App() {
   useEffect(() => {
     if (filtro) {
       //Filtrar gastos por categoria
-      const gastosFiltrados = gastos.filter( gasto => gasto.categoria === filtro );
+      const gastosFiltrados = gastos.filter(gasto => gasto.categoria === filtro);
       setGastosFiltrados(gastosFiltrados)
     }
   }, [filtro])
@@ -77,10 +76,11 @@ function App() {
   const guardarGasto = gasto => {
     if (gasto.id) {
       //Actualizar gasto
-      const gastosActualizados = gastos.map( gastoState => gastoState.id === gasto.id ? gasto : gastoState)
+      const gastosActualizados = gastos.map(gastoState => gastoState.id === gasto.id ? gasto : gastoState)
       setGastos(gastosActualizados);
       setGastoEditar({});
     } else {
+      
       //Nuevo gasto
       gasto.id = generarId();
       gasto.fecha = Date.now();
@@ -112,7 +112,7 @@ function App() {
       {isValidPresupuesto && (
         <>
           <main>
-            <Filtros 
+            <Filtros
               filtro={filtro}
               setFiltro={setFiltro}
             />
@@ -136,15 +136,15 @@ function App() {
       )}
 
       {modal && <Modal
-                  setModal={setModal}
-                  animarModal={animarModal}
-                  setAnimarModal={setAnimarModal}
-                  guardarGasto={guardarGasto}
-                  gastoEditar={gastoEditar}
-                  setGastoEditar={setGastoEditar}
-                />}
+        setModal={setModal}
+        animarModal={animarModal}
+        setAnimarModal={setAnimarModal}
+        guardarGasto={guardarGasto}
+        gastoEditar={gastoEditar}
+        setGastoEditar={setGastoEditar}
+      />}
     </div>
   )
 }
 
-export default App
+export default App;
